@@ -21,7 +21,8 @@ X = dataset[['sepal-length', 'sepal-width', 'petal-length', 'petal-width']]
 y = dataset['class']
 
 # Splitting up data into testing and training data
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.5, random_state = 42)
+X_train, X_test, y_train, y_test = train_test_split(
+    X, y, test_size=0.5, random_state=42)
 
 # List of number of neurons and hidden layers to create classifier
 configuration = config_finder(X_train, X_test, y_train, y_test, max_score=100)
@@ -32,7 +33,8 @@ model = MLPClassifier(hidden_layer_sizes=configuration, max_iter=5000)
 # Fitting the model to the data
 model.fit(X_train, y_train)
 
-# Converting dimensions from list to numpy array so that it can be reshaped for prediction
+# Converting dimensions from list to numpy array so that it can be
+# reshaped for prediction
 prediction = np.array(dimensions).reshape(1, -1)
 
 # Predicting result of given dimensions
@@ -40,6 +42,4 @@ pred_result = model.predict(prediction)
 
 # Just to make output cleaner
 for i in pred_result:
-	print(i)
-
-
+    print(i)
